@@ -17,4 +17,24 @@
 @import "bootstrap";
 
 
-body { padding-top: 70px; }
+body { padding-top: 70px;   background-image: image-url('enf2.jpg');
+background-position: center center;
+background-repeat: no-repeat;
+background-size: cover;
+    
+}
+.overbackground {
+color: white;
+background: linear-gradient(
+                     rgba(20,20,20, .5), 
+                     rgba(20,20,20, .5));
+}
+.content{
+    color: white;
+}
+/*
+.content{  background: url('enf2.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;}*/

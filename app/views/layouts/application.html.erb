@@ -23,6 +23,7 @@
         
         <% if current_user.present? %>
         <li><%= link_to "Cursos", courses_path, class: ""  %></li>
+        <li><%= link_to "Inscripciones", inscriptions_path, class: ""  %></li>
         <li><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: ""  %></li>
         <% else %>
         <li class="active"><%= link_to "Ingresar", new_user_session_path, class: ""  %> </li>
