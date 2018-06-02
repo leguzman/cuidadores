@@ -1,22 +1,22 @@
 <p id="notice"><%= notice %></p>
-
+<div class="col-md-7 col-md-offset-1 overbackground">
 <p>
-  <strong>Date:</strong>
+  <strong>Fecha:</strong>
   <%= @inscription.date %>
 </p>
 
 <p>
-  <strong>Course:</strong>
+  <strong>Curso:</strong>
   <%= @inscription.course_id %>
 </p>
 
 
 
 <p>
-  <strong>User:</strong>
+  <strong>Usuario:</strong>
   <%= @inscription.user_id %>
 </p>
-
+</div>
 
 
 <%= link_to 'Edit', edit_inscription_path(@inscription) %> |

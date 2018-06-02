@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<div class="col-md-6 col-md-offset-1 overbackground">
+<div class="col-md-7 col-md-offset-1 overbackground">
 <h1>Inscripciones</h1>
 
 <table class="table" >
@@ -20,9 +20,17 @@
         <td><%= @courses.find(inscription.course_id).name %></td>
         <td><%= @users.find(inscription.user_id).email %></td>
         <td><%= inscription.state%></td>
-        <td><%= link_to 'Show', inscription %></td>
-        <td><%= link_to 'Edit', edit_inscription_path(inscription) %></td>
-        <td><%= link_to 'Destroy', inscription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', inscription , class: "btn btn-default"%></td>
+        <% if !current_user.admin?%>
+        
+        <td><%= link_to 'Editar', edit_inscription_path(inscription) , class: "btn btn-default"%></td>
+        <td><%= link_to 'Borrar', inscription, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></td>
+        <% end %>
+        <%if current_user.admin?%>
+          <td><%= link_to 'Aceptar', aceptar_inscription_path(inscription), method: :patch , class: "btn btn-default"%></td>
+          <td><%= link_to 'Rechazar',  rechazar_inscription_path(inscription), method: :patch , class: "btn btn-default"%></td>
+        <% end %>
+        
       </tr>
     <% end %>
   </tbody>

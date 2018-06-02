@@ -4,7 +4,11 @@ class InscriptionsController < ApplicationController
   # GET /inscriptions
   # GET /inscriptions.json
   def index
-    @inscriptions = Inscription.all
+    if current_user.admin?
+      @inscriptions = Inscription.all.order("created_at DESC")
+    else
+      @inscriptions = Inscription.where(:user_id => current_user.id).order("created_at DESC")
+    end
     @courses = Course.all
     @users = User.all
   end
@@ -67,20 +71,16 @@ class InscriptionsController < ApplicationController
     end
   end
   
-  def estado
-      @inscription = Inscription.find(params[:id])
-      @inscription.update_attribute(:state , "En revisión")
-      redirect_to inscription_path(@inscription)
-  end
+
   def rechazar
       @inscription = Inscription.find(params[:id])
       @inscription.update_attribute(:state , "Rechazada")
-      redirect_to inscription_path(@inscription)
+      redirect_to inscriptions_path
   end
   def aceptar
       @inscription = Inscription.find(params[:id])
       @inscription.update_attribute(:state , "Aceptada")
-      redirect_to inscription_path(@inscription)
+      redirect_to inscriptions_path
   end
 
   private
