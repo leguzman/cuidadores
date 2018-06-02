@@ -40,6 +40,7 @@ class InscriptionsController < ApplicationController
         format.json { render json: @inscription.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # PATCH/PUT /inscriptions/1
@@ -66,11 +67,20 @@ class InscriptionsController < ApplicationController
     end
   end
   
-  def inscribiruno
-      @inscription = current_user.inscriptions.build
-      @inscription.update_attribute(:course_id , 1)
-      @inscription.update_attribute(:user_id , current_user.id)
+  def estado
+      @inscription = Inscription.find(params[:id])
       @inscription.update_attribute(:state , "En revisión")
+      redirect_to inscription_path(@inscription)
+  end
+  def rechazar
+      @inscription = Inscription.find(params[:id])
+      @inscription.update_attribute(:state , "Rechazada")
+      redirect_to inscription_path(@inscription)
+  end
+  def aceptar
+      @inscription = Inscription.find(params[:id])
+      @inscription.update_attribute(:state , "Aceptada")
+      redirect_to inscription_path(@inscription)
   end
 
   private

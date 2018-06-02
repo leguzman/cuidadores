@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   resources :inscriptions do
     member do
-      patch :inscribir
-    
+      patch :estado
+      patch :rechazar
+      patch :aceptar
+      
+      
     end
   end
   resources :courses
