@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :inscriptions
+  resources :inscriptions do
+    member do
+      patch :inscribir
+    
+    end
+  end
   resources :courses
   devise_for :users
   get 'welcome/index'

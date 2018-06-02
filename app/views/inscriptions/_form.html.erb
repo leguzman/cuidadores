@@ -3,14 +3,15 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.date_field :date %>
-    <%= f.select(:course_id, [['Nivel 1', 1], ['Nivel 2', 2]]) %>
+  <div class="form-group">
+    <%= f.date_field :date, class: 'form-control'  %>
+    <br>
+    <%= f.select(:course_id, [['Nivel 1', 1], ['Nivel 2', 2]], {}, class: "form-control" ) %>
     
   
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-actions ">
+    <%= f.button :submit,"Inscribirse" %>
   </div>
 <% end %>

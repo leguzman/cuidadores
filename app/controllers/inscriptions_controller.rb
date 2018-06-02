@@ -5,6 +5,8 @@ class InscriptionsController < ApplicationController
   # GET /inscriptions.json
   def index
     @inscriptions = Inscription.all
+    @courses = Course.all
+    @users = User.all
   end
 
   # GET /inscriptions/1
@@ -62,6 +64,13 @@ class InscriptionsController < ApplicationController
       format.html { redirect_to inscriptions_url, notice: 'Inscripción Anulada.' }
       format.json { head :no_content }
     end
+  end
+  
+  def inscribiruno
+      @inscription = current_user.inscriptions.build
+      @inscription.update_attribute(:course_id , 1)
+      @inscription.update_attribute(:user_id , current_user.id)
+      @inscription.update_attribute(:state , "En revisión")
   end
 
   private
