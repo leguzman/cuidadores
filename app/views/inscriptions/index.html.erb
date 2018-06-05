@@ -47,4 +47,6 @@
 <br>
 <br>
 </div>
-<%= link_to 'New Inscription', new_inscription_path %>
+<% if !current_user.admin?%>
+<%= link_to 'Inscribirse', new_inscription_path %>
+<% end %>
